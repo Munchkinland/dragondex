@@ -3,15 +3,15 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #333; /* Cambiado a coincidir con el color de fondo del header */
-    color: #f0f0f0; /* Cambiado a un color claro para contraste con el fondo oscuro */
+    background-color: #333;
+    color: #f0f0f0;
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
 header {
-    background-color: #333; /* Color de fondo del header */
+    background-color: #333;
     color: #fff;
     padding: 20px 0;
     position: relative;
@@ -19,23 +19,23 @@ header {
 
 .header-content {
     display: flex;
-    flex-direction: column; /* Colocar el logo encima del título */
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
 
 .header-logo {
-    width: 80px; /* Ajustar tamaño del logo según sea necesario */
-    height: auto; /* Mantener proporción */
+    width: 80px;
+    height: auto;
     border-radius: 10px;
-    margin-bottom: 10px; /* Espacio entre el logo y el título */
+    margin-bottom: 10px;
 }
 
 h1 {
     margin: 0;
     font-size: 2.5em;
-    font-family: 'Rubik', cursive; /* Fuente atractiva para el título */
-    color: #FFD700; /* Color dorado del título */
+    font-family: 'Rubik', cursive;
+    color: #FFD700;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -43,11 +43,11 @@ h1 {
     padding: 10px;
     width: 300px;
     margin-top: 10px;
-    border: 2px solid #f0f0f0; /* Color de borde cambiado para contrastar con el fondo oscuro */
+    border: 2px solid #f0f0f0;
     border-radius: 5px;
     font-size: 1em;
     display: block;
-    margin: 10px auto 0; /* Separar del contenedor de título/logo */
+    margin: 10px auto 0;
 }
 
 main {
@@ -66,7 +66,7 @@ main {
 }
 
 .character-card, .planet-card {
-    background-color: #444; /* Fondo más claro para las tarjetas */
+    background-color: #444;
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -75,16 +75,17 @@ main {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-width: 200px; /* Tamaño mínimo para las tarjetas */
-    max-width: 250px; /* Tamaño máximo para las tarjetas */
+    min-width: 200px;
+    max-width: 250px;
     margin: 15px;
     padding: 10px;
+    position: relative;
 }
 
 /* Estilo para etiquetas en personajes y planetas */
 .character-card p strong, .planet-card p strong {
-    color: #FFD700; /* Color amarillo */
-    font-weight: bold; /* Negrita */
+    color: #FFD700;
+    font-weight: bold;
 }
 
 /* Animación de vibración */
@@ -104,6 +105,12 @@ main {
 /* Aplicar vibración a los planetas */
 .planet-card:hover {
     animation: vibrate 0.5s linear;
+}
+
+/* Efecto de zoom en la tarjeta al hacer clic */
+.character-card.zoomed, .planet-card.zoomed {
+    transform: scale(1.5); /* Ajusta el valor de escala según sea necesario */
+    z-index: 10; /* Asegura que el elemento ampliado esté encima de los demás */
 }
 
 .character-card img, .planet-card img {
@@ -128,12 +135,12 @@ main {
 }
 
 .planet-card img {
-    width: 100%; /* Asegura que la imagen se ajuste al contenedor */
-    max-width: 250px; /* Tamaño máximo para la imagen de los planetas */
+    width: 100%;
+    max-width: 250px;
 }
 
 .planet-card h2 {
-    font-size: 1.2em; /* Ajusta el tamaño del texto para los planetas */
+    font-size: 1.2em;
     margin: 10px 0;
 }
 
@@ -143,7 +150,7 @@ main {
 }
 
 footer {
-    background-color: #333; /* Fondo del footer igual al del header */
+    background-color: #333;
     color: #fff;
     padding: 10px 0;
     position: fixed;

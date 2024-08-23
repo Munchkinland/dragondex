@@ -5,19 +5,18 @@ document.addEventListener('DOMContentLoaded', function () {
     const planetList = document.getElementById('planet-list');
     const searchInput = document.getElementById('searchInput');
 
-    // Variables para manejar paginación y búsqueda
     let searchQuery = '';
     let allCharacters = [];
     let allPlanets = [];
 
-    // Función para obtener todos los personajes
+    let zoomedCharacter = null;
+
     function fetchAllCharacters() {
         fetch(`${baseCharacterUrl}?page=1`)
             .then(response => response.json())
             .then(data => {
                 allCharacters = data.items;
                 const totalPages = data.meta.totalPages;
-                // Obtener todas las páginas de personajes
                 const pageRequests = [];
                 for (let i = 2; i <= totalPages; i++) {
                     pageRequests.push(fetch(`${baseCharacterUrl}?page=${i}`).then(response => response.json()));
@@ -33,14 +32,12 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Error fetching characters:', error));
     }
 
-    // Función para obtener todos los planetas
     function fetchAllPlanets() {
         fetch(`${basePlanetUrl}?page=1`)
             .then(response => response.json())
             .then(data => {
                 allPlanets = data.items;
                 const totalPages = data.meta.totalPages;
-                // Obtener todas las páginas de planetas
                 const pageRequests = [];
                 for (let i = 2; i <= totalPages; i++) {
                     pageRequests.push(fetch(`${basePlanetUrl}?page=${i}`).then(response => response.json()));
@@ -56,12 +53,12 @@ document.addEventListener('DOMContentLoaded', function () {
             .catch(error => console.error('Error fetching planets:', error));
     }
 
-    // Función para mostrar los personajes en el DOM
     function displayCharacters(characters) {
         characterList.innerHTML = '';
         characters.forEach(character => {
             const characterCard = document.createElement('div');
             characterCard.classList.add('character-card');
+            characterCard.dataset.characterId = character.id; // Añadir ID para referencia
             characterCard.innerHTML = `
                 <img src="${character.image}" alt="${character.name}">
                 <h2>${character.name}</h2>
@@ -69,11 +66,11 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><strong>Género:</strong> ${character.gender}</p>
                 <p><strong>Ki:</strong> ${character.ki}</p>
             `;
+            characterCard.addEventListener('click', () => toggleZoom(characterCard));
             characterList.appendChild(characterCard);
         });
     }
 
-    // Función para mostrar los planetas en el DOM
     function displayPlanets(planets) {
         planetList.innerHTML = '';
         planets.forEach(planet => {
@@ -89,19 +86,29 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }
 
-    // Función para filtrar los personajes según la búsqueda
     function filterCharacters(query) {
         const filtered = allCharacters.filter(character => character.name.toLowerCase().includes(query.toLowerCase()));
         displayCharacters(filtered);
     }
 
-    // Función para filtrar los planetas según la búsqueda
     function filterPlanets(query) {
         const filtered = allPlanets.filter(planet => planet.name.toLowerCase().includes(query.toLowerCase()));
         displayPlanets(filtered);
     }
 
-    // Manejar la entrada del usuario para buscar personajes y planetas
+    function toggleZoom(card) {
+        if (zoomedCharacter && zoomedCharacter !== card) {
+            zoomedCharacter.classList.remove('zoomed');
+        }
+        if (zoomedCharacter === card) {
+            zoomedCharacter.classList.remove('zoomed');
+            zoomedCharacter = null;
+        } else {
+            card.classList.add('zoomed');
+            zoomedCharacter = card;
+        }
+    }
+
     searchInput.addEventListener('input', function () {
         searchQuery = searchInput.value.trim();
         if (searchQuery) {
@@ -113,7 +120,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     });
 
-    // Cargar todos los personajes y planetas al inicio
     fetchAllCharacters();
     fetchAllPlanets();
 });
