@@ -3,15 +3,15 @@
 
 body {
     font-family: 'Roboto', sans-serif;
-    background-color: #f0f0f0;
-    color: #333;
+    background-color: #333; /* Cambiado a coincidir con el color de fondo del header */
+    color: #f0f0f0; /* Cambiado a un color claro para contraste con el fondo oscuro */
     margin: 0;
     padding: 0;
     text-align: center;
 }
 
 header {
-    background-color: #333;
+    background-color: #333; /* Color de fondo del header */
     color: #fff;
     padding: 20px 0;
     position: relative;
@@ -35,7 +35,7 @@ h1 {
     margin: 0;
     font-size: 2.5em;
     font-family: 'Rubik', cursive; /* Fuente atractiva para el título */
-    color: #FFD700;
+    color: #FFD700; /* Color dorado del título */
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -43,7 +43,7 @@ h1 {
     padding: 10px;
     width: 300px;
     margin-top: 10px;
-    border: 2px solid #333;
+    border: 2px solid #f0f0f0; /* Color de borde cambiado para contrastar con el fondo oscuro */
     border-radius: 5px;
     font-size: 1em;
     display: block;
@@ -66,7 +66,7 @@ main {
 }
 
 .character-card, .planet-card {
-    background-color: #fff;
+    background-color: #444; /* Fondo más claro para las tarjetas */
     border-radius: 10px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     text-align: center;
@@ -79,6 +79,12 @@ main {
     max-width: 250px; /* Tamaño máximo para las tarjetas */
     margin: 15px;
     padding: 10px;
+}
+
+/* Estilo para etiquetas en personajes y planetas */
+.character-card p strong, .planet-card p strong {
+    color: #FFD700; /* Color amarillo */
+    font-weight: bold; /* Negrita */
 }
 
 /* Animación de vibración */
@@ -137,7 +143,7 @@ main {
 }
 
 footer {
-    background-color: #333;
+    background-color: #333; /* Fondo del footer igual al del header */
     color: #fff;
     padding: 10px 0;
     position: fixed;
