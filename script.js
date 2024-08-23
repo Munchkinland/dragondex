@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let allCharacters = [];
     let allPlanets = [];
 
-    let zoomedCharacter = null;
+    let zoomedElement = null;
 
     function fetchAllCharacters() {
         fetch(`${baseCharacterUrl}?page=1`)
@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 <p><strong>Descripción:</strong> ${planet.description}</p>
                 <p><strong>Destruido:</strong> ${planet.isDestroyed ? 'Sí' : 'No'}</p>
             `;
+            planetCard.addEventListener('click', () => toggleZoom(planetCard));
             planetList.appendChild(planetCard);
         });
     }
@@ -96,16 +97,16 @@ document.addEventListener('DOMContentLoaded', function () {
         displayPlanets(filtered);
     }
 
-    function toggleZoom(card) {
-        if (zoomedCharacter && zoomedCharacter !== card) {
-            zoomedCharacter.classList.remove('zoomed');
+    function toggleZoom(element) {
+        if (zoomedElement && zoomedElement !== element) {
+            zoomedElement.classList.remove('zoomed');
         }
-        if (zoomedCharacter === card) {
-            zoomedCharacter.classList.remove('zoomed');
-            zoomedCharacter = null;
+        if (zoomedElement === element) {
+            zoomedElement.classList.remove('zoomed');
+            zoomedElement = null;
         } else {
-            card.classList.add('zoomed');
-            zoomedCharacter = card;
+            element.classList.add('zoomed');
+            zoomedElement = element;
         }
     }
 
