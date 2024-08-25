@@ -2,6 +2,10 @@
 
 DragonDex es una aplicación web estática que muestra personajes y planetas del universo Dragon Ball. Utiliza HTML, CSS y JavaScript para proporcionar una interfaz interactiva para buscar y mostrar información sobre personajes y planetas.
 
+## Aequitectura
+
+![Web Application Deployment Process](https://github.com/user-attachments/assets/987a2a0e-dca7-46ea-b628-5734683d20a6)
+
 ## Requisitos
 
 Antes de comenzar, asegúrate de tener instalados los siguientes requisitos:
